@@ -6,7 +6,7 @@ class Calculator {
   }
 
   clear() {
-    this.currentOperand = '';
+    this.currentOperand = '0';
     this.previousOperand = '';
     this.operation = undefined;
   }
@@ -27,7 +27,7 @@ class Calculator {
     }
     this.operation = operation;
     this.previousOperand = this.currentOperand;
-    this.currentOperand = '';
+    this.currentOperand = '0';
   }
 
   compute() {
@@ -127,6 +127,11 @@ document.addEventListener('keydown', function (e) {
   const keyNum = Number(key);
   if (keyNum) {
     calculator.appendNumber(keyNum);
+    calculator.updateDisplay();
+  }
+
+  if (key === '.') {
+    calculator.appendNumber('.');
     calculator.updateDisplay();
   }
 
